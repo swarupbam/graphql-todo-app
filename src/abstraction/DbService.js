@@ -21,7 +21,7 @@ function deleteTodoById(id){
 }
 function addNewTodo(args){
     return new Promise((resolve, reject) => {
-        dbClient.query("insert into todos(title,description) values(?,?)", [args.title,args.description], (error, results) => {
+        dbClient.query("insert into todos(title,description,status) values(?,?,?)", [args.title,args.description,args.status], (error, results) => {
             if(error){
                 return reject("Failed to insert the new todo");
             }
@@ -33,7 +33,7 @@ function getTodoById(id) {
     return new Promise((resolve, reject) => {
         dbClient.query("select * from todos where id=?;", [id], (error, results) => {
             if(error){
-                console.log(error);
+                return reject(null);
             }
             return resolve(results[0]);
         });
