@@ -9,7 +9,7 @@ type Todo{
     status: String!
 }
 type Mutation{
-    add(title: String!, description: String!): String!,
-    update(id: Int!,description: String!): String!,
+    add(title: String!, description: String!, status: String!): String!,
+    update(id: Int!, status: String!): String!,
     delete(id: Int!): String!
 }
